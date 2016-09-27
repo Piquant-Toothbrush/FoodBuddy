@@ -20,7 +20,7 @@ class Inbox extends React.Component {
       <div className='notification collection'>
         <div className='header'>Inbox</div>
 
-        <div className="notificationLable">your pending requests</div>
+        <div className="notificationLable">Your pending requests</div>
         <div className="updateMsg">{empty}</div>
         {this.props.pplWhoWantToBeFriends.map(friend =>
           <InboxEntry

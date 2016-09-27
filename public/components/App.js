@@ -1,22 +1,37 @@
+
 class App extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      view: 'Login',
-      friendsRatings: [],
-      movie: null,
-      friendRequests: [],
-      pendingFriendRequests: [],
-      myFriends: [],
-      friendToFocusOn: '',
-      individualFriendsMovies: [],
-      potentialMovieBuddies: {},
-      username: null,
-      requestResponses: [],
-      currentUser: null,
-      requestsOfCurrentUser: []
-    };
+    this.state = startingState;
+
+    this.sendWatchRequest=this.sendWatchRequest.bind(this);
+    this.fof= this.focusOnFriend.bind(this);
+    this.getFriends=this.getCurrentFriends.bind(this);
+    this.myFriends=this.state.myFriends;
+    this.listPotentials=this.listPotentials.bind(this); 
+    this.logout=this.logout.bind(this)  
+    this.sendRequest=this.sendRequest.bind(this);
+    this.find=this.findMovieBuddies.bind(this);
+    this.onClick=this.changeViews.bind(this);
+    this.changeViews=this.changeViews.bind(this);
+    this.setCurrentUser=this.setCurrentUser.bind(this);
+    this.getMovie=this.getMovie.bind(this);
+    this.logout= this.logout.bind(this);
+    this.acceptFriend= this.acceptFriend.bind(this);
+    this.decline=this.declineFriend.bind(this);
+    this.listRequests=this.listPendingFriendRequests.bind(this);
+    this.remove=this.removeRequest.bind(this);
+    this.changeViewsMovie=this.changeViewsMovie.bind(this);
+    this.buddyfunc=this.buddyRequest.bind(this);
+    this.changeViewsFriends=this.changeViewsFriends.bind(this);
+    this.findMovieBuddies=this.findMovieBuddies.bind(this);
+    this.buddyRequest=this.buddyRequest.bind(this);
+    this.listPendingFriendRequests=this.listPendingFriendRequests.bind(this);
+    this.focusOnFriend=this.focusOnFriend.bind(this);
+    this.listRequests=this.listPendingFriendRequests.bind(this);
+    this.removeRequest=this.removeRequest.bind(this);
+
   }
 
   getCurrentFriends() {
@@ -30,7 +45,7 @@ class App extends React.Component {
                 }              
               }
 
-       const final= a.sort(function(a,b){return b[1]-a[1]});
+       const final= a.sort((a,b)=>{return b[1]-a[1]});
       this.setState({
         myFriends:final
       })
@@ -43,26 +58,30 @@ class App extends React.Component {
     //   console.log($(this).html());
     // })
     // console.log(final +'should be accepted, for movie....', movie)
-
+    console.log('calling aF');
+    var that=this;
     $.post(Url + '/accept',{personToAccept:personToAccept, movie: movie},(resp,err)=> {
-      this.listPendingFriendRequests();
+      console.log('it came back!', that);
+      that.listPendingFriendRequests();
     })
     
     // console.log('refreshed inbox, should delete friend request on the spot instead of moving')
   }
 
   declineFriend(personToDecline, movie) {
+    var that=this;
     $.post(Url + '/decline',{personToDecline:personToDecline, movie: movie},(resp, err)=> {
       // console.log('this is the state after declining friend, ', this.state);
-      this.listPendingFriendRequests();
+      that.listPendingFriendRequests();
     });
   }
 
   findMovieBuddies() {
-   
+   var that=this;
     $.post(Url + '/findMovieBuddies',{dummy:'info'},(resp, err)=> {
-      const sorted=resp.sort(function(a,b){return b[1]-a[1]});
-      const myFriends=this.state.myFriends;
+      console.log(that,this);
+      const sorted=resp.sort((a,b)=>(b[1]-a[1]));
+      const myFriends=that.myFriends;
        const uniqueFriends=[];
         for (let i=0;i<sorted.length;i++){
           let unique=true;
@@ -72,7 +91,7 @@ class App extends React.Component {
             }
           }
           if (unique){
-            uniqueFriends.push(sorted[i])
+            uniqueFriends.push(sorted[i]);
           }
         }
 
@@ -125,21 +144,7 @@ class App extends React.Component {
   logout() {
     $.post(Url + '/logout').then(response=> {
       // console.log(response);
-      this.setState({
-        view:"Login",
-        friendsRatings:[],
-        movie: null,
-        friendRequests:[],
-        pendingFriendRequests:[],
-        myFriends:[],
-        friendToFocusOn:'',
-        individualFriendsMovies:[],
-        potentialMovieBuddies:{},
-        username: null,
-        requestResponses:[],
-        currentUser:null,
-        requestsOfCurrentUser:[]
-      });
+      this.setState(startingState);
     });
   }
 
@@ -226,14 +231,18 @@ class App extends React.Component {
 
 
   buddyRequest(person) {
+    console.log(person);
     this.sendRequest(person);
   }
 
 
   sendRequest(a) {
+    console.log(a);
     if (document.getElementById('findFriendByName')!==null){
       var person=document.getElementById('findFriendByName').value
+      console.log('part 1');
     } else {
+      console.log('part 2');
       var person = a || 'test';
     }
     const currFriends=this.state.myFriends;
@@ -253,12 +262,12 @@ class App extends React.Component {
 
     //console.log('tof',friends1.indexOf(person)!== -1, friends1.length!==0)
     if (friends1.indexOf(person)!== -1 && friends1.length!==0){
-      $("#AlreadyReq").fadeIn(1000);
-      $("#AlreadyReq").fadeOut(1000);
+      $("#AlreadyReq,#AlreadyReq2").fadeIn(1000);
+      $("#AlreadyReq,#AlreadyReq2").fadeOut(1000);
       // console.log('this person is already in there!!')
     } else if (!person.length) {
-      $("#enterRealFriend").fadeIn(1000);
-      $("#enterRealFriend").fadeOut(1000);
+      $("#enterRealFriend,#enterRealFriend2").fadeIn(1000);
+      $("#enterRealFriend,#enterRealFriend2").fadeOut(1000);
     } else {
 
 // console.log('person is defined?',person);
@@ -269,8 +278,8 @@ class App extends React.Component {
           })
           // console.log('line 281',this.state.requestsOfCurrentUser);
 
-        $("#reqSent").fadeIn(1000);
-        $("#reqSent").fadeOut(1000);
+        $("#reqSent,#reqSent2").fadeIn(1000);
+        $("#reqSent,#reqSent2").fadeOut(1000);
       });
       if ( document.getElementById('findFriendByName')!==null){
         document.getElementById('findFriendByName').value = '';
@@ -283,7 +292,7 @@ class App extends React.Component {
     $.post(Url + '/listRequests', (response, error)=> {
       const pFR=[];
       const rR=[];
-      // console.log('response to lpfr', response);
+       console.log('response to lpfr', response);
 
       for (var i=0;i<response[0].length;i++){
         const requestor=response[0][i]['requestor'];
@@ -295,7 +304,8 @@ class App extends React.Component {
           rR.push(response[0][i]);
         }
       }
-
+      //
+console.log("notifs!",pFR, rR);
       this.setState({
         pendingFriendRequests:pFR,
         requestResponses:rR
@@ -323,6 +333,7 @@ class App extends React.Component {
   }
 
   removeRequest(person, self, movie) {
+    console.log('trying to rem req');
     var that= this;
     $.ajax({
       url: Url + '/removeRequest',
@@ -333,35 +344,35 @@ class App extends React.Component {
         movie: movie
       },
       success: function(response) {
-        // console.log('REQUEST REMOVED! Movie is: ', movie);
+         console.log('REQUEST REMOVED! Movie is: ', movie);
         that.listPendingFriendRequests();
       },
       error: function(error) {
-        // console.log(error);
+         console.log(error);
       }
     });
   }
 
   render() {
+    const nav=<Nav name={this.state.currentUser}
+            find={this.findMovieBuddies}
+            onClick={this.changeViews}
+            logout={this.logout} 
+            />
+
     if (this.state.view==='Login') {
-      return (<LogIn changeViews={this.changeViews.bind(this)} setCurrentUser={this.setCurrentUser.bind(this)}/>);
+      return (<LogIn changeViews={this.changeViews} setCurrentUser={this.setCurrentUser}/>);
     } else if (this.state.view==="SignUp") {
-      return (<SignUp changeViews={this.changeViews.bind(this)} setCurrentUser={this.setCurrentUser.bind(this)} />);
+      return (<SignUp changeViews={this.changeViews} setCurrentUser={this.setCurrentUser} />);
     } 
     //this view is added for moviesearch rendering
     else if (this.state.view === "MovieSearchView") {
       return ( 
         <div> 
-          <div>
-            <Nav name={this.state.currentUser}
-            find={this.findMovieBuddies.bind(this)}
-            onClick={this.changeViews.bind(this)}
-            logout={this.logout.bind(this)} 
-            />
-          </div>
+          <div>{nav}</div>
           <div>
           <MovieRating 
-            handleSearchMovie={this.getMovie.bind(this)} 
+            handleSearchMovie={this.getMovie}
             movie={this.state.movie}
             />
           </div>
@@ -371,39 +382,36 @@ class App extends React.Component {
       return (
         <div>
             <Nav name={this.state.currentUser}
-              find={this.findMovieBuddies.bind(this)}
-              onClick={this.changeViews.bind(this)}
-              logout={this.logout.bind(this)}
+              find={this.findMovieBuddies}
+              onClick={this.changeViews}
+              logout={this.logout}
               Home={true}
             />
             <Inbox 
               requests={this.state.pendingFriendRequests}
               responsesAnswered={this.state.requestResponses}
-              logout={this.logout.bind(this)}  
-              accept= {this.acceptFriend.bind(this)} 
-              decline={this.declineFriend.bind(this)} 
-              listRequests={this.listPendingFriendRequests.bind(this)} 
+              logout={this.logout}  
+              accept= {this.acceptFriend} 
+              decline={this.declineFriend} 
+              listRequests={this.listPendingFriendRequests} 
               pplWhoWantToBeFriends={this.state.pendingFriendRequests.map(
-                function(a){return [a.requestor,a.requestTyp,a.movie===null?"": a.movie,"Message:"+ a.message==='null'?"none":a.message]})} 
-              remove={this.removeRequest.bind(this)}
+                a=>( [a.requestor,a.requestTyp,a.movie===null?"": a.movie,"Message:"+ a.message==='null'?"none":a.message]))} 
+              remove={this.removeRequest}
             />
         </div>
       );
     } else if (this.state.view === "Friends" ) {
       return (
         <div>
-            <Nav name={this.state.currentUser}
-              find={this.findMovieBuddies.bind(this)}
-              onClick={this.changeViews.bind(this)}
-              logout={this.logout.bind(this)}/>
+            {nav}
           <Friends 
-            sendWatchRequest={this.sendWatchRequest.bind(this)} 
-            fof= {this.focusOnFriend.bind(this)} 
-            getFriends={this.getCurrentFriends.bind(this)} 
+            sendWatchRequest={this.sendWatchRequest} 
+            fof= {this.focusOnFriend} 
+            getFriends={this.getCurrentFriends} 
             myFriends={this.state.myFriends} 
-            listPotentials={this.listPotentials.bind(this)} 
-            logout={this.logout.bind(this)}  
-            sendRequest={this.sendRequest.bind(this)}
+            listPotentials={this.listPotentials} 
+            logout={this.logout}  
+            sendRequest={this.sendRequest}
           />
         </div>
       );
@@ -411,13 +419,9 @@ class App extends React.Component {
     else if (this.state.view === "Home") {
       return (
         <div>
-            <Nav name={this.state.currentUser}
-              find={this.findMovieBuddies.bind(this)} 
-              onClick={this.changeViews.bind(this)}
-              logout={this.logout.bind(this)}
-            />
+            {nav}
           <Home 
-            change={this.changeViewsMovie.bind(this)}
+            change={this.changeViewsMovie}
           />
         </div>
       );
@@ -425,44 +429,33 @@ class App extends React.Component {
       let that = this;
       return (
         <div onClick={()=>console.log(that.state)}>
-            <Nav name={this.state.currentUser}
-              onClick={this.changeViews.bind(this)}
-              logout={this.logout.bind(this)}
-            />
+            {nav}
           <SingleMovieRating 
             compatibility={this.state.myFriends}
             currentMovie={this.state.movie}
-            change={this.changeViewsFriends.bind(this)}
-            fof={this.focusOnFriend.bind(this)}
+            change={this.changeViewsFriends}
+            fof={this.focusOnFriend}
           />
         </div>
       );
     } else if (this.state.view==='singleFriend') {
       return (
         <div>
-            <Nav name={this.state.currentUser}
-              find={this.findMovieBuddies.bind(this)} 
-              onClick={this.changeViews.bind(this)}
-              logout={this.logout.bind(this)}
-            />
+            {nav}
           <SingleFriend 
             moviesOfFriend={this.state.individualFriendsMovies} 
             friendName={this.state.friendToFocusOn} 
-            onClick={this.changeViews.bind(this)}
-            change={this.changeViewsMovie.bind(this)}
+            onClick={this.changeViews}
+            change={this.changeViewsMovie}
           />
         </div>
       );
     } else if (this.state.view === "FNMB") {
       return (
         <div>
-            <Nav name={this.state.currentUser}
-              find={this.findMovieBuddies.bind(this)} 
-              onClick={this.changeViews.bind(this)}
-              logout={this.logout.bind(this)}
-            />
+            {nav}
           <FindMovieBuddy 
-            buddyfunc={this.buddyRequest.bind(this)} 
+            buddyfunc={this.buddyRequest} 
             buddies={this.state.potentialMovieBuddies} 
           />
         </div>
@@ -470,13 +463,9 @@ class App extends React.Component {
     } else if (this.state.view === "MyRatings") {
       return (
         <div>
-            <Nav name={this.state.currentUser}
-              find={this.findMovieBuddies.bind(this)} 
-              onClick={this.changeViews.bind(this)}
-              logout={this.logout.bind(this)}
-            />
+            {nav}
           <MyRatings 
-            change={this.changeViewsMovie.bind(this)}
+            change={this.changeViewsMovie}
           />
         </div>
       );

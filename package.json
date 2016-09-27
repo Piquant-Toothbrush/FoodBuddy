@@ -40,7 +40,8 @@
     "react-router": "^2.6.0",
     "react-star-rating-component": "^1.0.0",
     "request": "^2.73.0",
-    "underscore": "latest"
+    "underscore": "latest",
+    "webpack": "^1.13.2"
   },
   "scripts": {
     "front-end": "babel . --out-dir compiled --presets=es2015,react --ignore=node_modules,compiled --source-maps inline --watch",
