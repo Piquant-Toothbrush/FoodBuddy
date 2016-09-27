@@ -5,15 +5,16 @@ var SingleFriend = ({moviesOfFriend,onClick,friendName, change}) => {
 	if (!moviesOfFriend.length){
 		return (
 			<div>
-			<button onClick={() => (onClick("Friends"))}>Back to all friends</button><br/>
-			Sorry, {friendName.slice(friendName.indexOf(">") + 1, friendName.lastIndexOf("<"))} hasn't rated any movies.
+			<a id="backToAllFriends" className="center waves-effect waves-light btn" onClick={() => (onClick("Friends"))}>Back to all friends</a>
+			
+			<h5 id="noFriendMovies" class="header lable">Sorry, {friendName.slice(friendName.indexOf(">") + 1, friendName.lastIndexOf("<")+1)} hasn't rated any movies.</h5>
 			</div>
 			)
 
 	} else {
 		return (
 	  <div className="Home collection">
-			<a className="center waves-effect waves-light btn" onClick={() => (onClick("Friends"))}>Back to all friends</a>
+			<a id="backToAllFriends" className="center waves-effect waves-light btn" onClick={() => (onClick("Friends"))}>Back to all friends</a>
 			<div className="header large"> list of {friendName}'s movies</div>
 			<div className='moviesOfFriend'>
 				{moviesOfFriend.map(movie => <MovieListEntry friendName={friendName} movie={movie} change={change}/> )}

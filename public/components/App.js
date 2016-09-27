@@ -230,13 +230,13 @@ class App extends React.Component {
   }
 
 
-  buddyRequest(person) {
-    console.log(person);
-    this.sendRequest(person);
+  buddyRequest(person, idx) {
+    console.log(person, idx);
+    this.sendRequest(person, idx);
   }
 
 
-  sendRequest(a) {
+  sendRequest(a, idx) {
     console.log(a);
     if (document.getElementById('findFriendByName')!==null){
       var person=document.getElementById('findFriendByName').value
@@ -262,12 +262,16 @@ class App extends React.Component {
 
     //console.log('tof',friends1.indexOf(person)!== -1, friends1.length!==0)
     if (friends1.indexOf(person)!== -1 && friends1.length!==0){
+      $(document).scrollTop(0)
       $("#AlreadyReq,#AlreadyReq2").fadeIn(1000);
       $("#AlreadyReq,#AlreadyReq2").fadeOut(1000);
+        
       // console.log('this person is already in there!!')
     } else if (!person.length) {
+       $(document).scrollTop(0)
       $("#enterRealFriend,#enterRealFriend2").fadeIn(1000);
       $("#enterRealFriend,#enterRealFriend2").fadeOut(1000);
+       
     } else {
 
 // console.log('person is defined?',person);
@@ -277,7 +281,7 @@ class App extends React.Component {
             requestsOfCurrentUser:resp.concat([person])
           })
           // console.log('line 281',this.state.requestsOfCurrentUser);
-
+          $(document).scrollTop(0)
         $("#reqSent,#reqSent2").fadeIn(1000);
         $("#reqSent,#reqSent2").fadeOut(1000);
       });

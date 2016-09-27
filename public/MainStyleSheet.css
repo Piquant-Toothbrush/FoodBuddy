@@ -471,6 +471,13 @@ textarea {
   font-size: 30px;
 }
 
+a#backToAllFriends {
+    left: 50px;
+    position: relative;
+}
+#noFriendMovies{
+    text-align: center;
+}
 /*
   ========================================
   movie buddy view
