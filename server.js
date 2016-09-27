@@ -7,11 +7,11 @@ var sessions = require("client-sessions");
 var cors = require('cors');
 
 app.get('*', function(req,res,next) {
-  if (req.headers['x-forwarded-proto'] !== 'https') {
-    res.redirect('https://' + req.hostname + req.url);
-  } else {
+  // if (req.headers['x-forwarded-proto'] !== 'https') {
+  //   res.redirect('https://' + req.hostname + req.url);
+  // } else {
     next();
-  }
+  //}
 });
 
 app.use(cors());
