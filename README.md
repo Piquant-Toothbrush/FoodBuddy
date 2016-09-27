@@ -1,5 +1,8 @@
 # TheMovieApp
 
+	## NOTE: THIS BRANCH IS FOR LOCALHOST -KMA
+
+
 ## Installation and setup requirements
 * Install required dependencies
   * `npm install`
