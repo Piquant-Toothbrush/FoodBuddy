@@ -3,7 +3,7 @@ var knex = require('knex')({
   connection: {
     host: process.env.DATABASE_HOST || '127.0.0.1',
     user: process.env.DATABASE_USER || 'root',
-    password: process.env.DATABASE_PASSWORD || '123',
+    password: process.env.DATABASE_PASSWORD || '12345',
     database: process.env.DATABASE_NAME || 'MainDatabase',
     charset  : 'utf8'
   },
