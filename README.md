@@ -1,6 +1,6 @@
 # TheMovieApp
 
-	## NOTE: THIS BRANCH IS FOR LOCALHOST -KMA
+## NOTE: THIS BRANCH IS FOR LOCALHOST -KMA
 
 
 ## Installation and setup requirements

@@ -20,6 +20,7 @@ class App extends React.Component {
     this.logout= this.logout.bind(this);
     this.acceptFriend= this.acceptFriend.bind(this);
     this.decline=this.declineFriend.bind(this);
+    this.declineFriend=this.declineFriend.bind(this);
     this.listRequests=this.listPendingFriendRequests.bind(this);
     this.remove=this.removeRequest.bind(this);
     this.changeViewsMovie=this.changeViewsMovie.bind(this);
@@ -237,9 +238,9 @@ class App extends React.Component {
 
 
   sendRequest(a, idx) {
-    console.log(a);
-    if (document.getElementById('findFriendByName')!==null){
-      var person=document.getElementById('findFriendByName').value
+    console.log(typeof a);
+    if (typeof a==="object"){
+      var person=document.getElementById('findFriendByName').value;
       console.log('part 1');
     } else {
       console.log('part 2');
@@ -459,6 +460,7 @@ console.log("notifs!",pFR, rR);
         <div>
             {nav}
           <FindMovieBuddy 
+
             buddyfunc={this.buddyRequest} 
             buddies={this.state.potentialMovieBuddies} 
           />

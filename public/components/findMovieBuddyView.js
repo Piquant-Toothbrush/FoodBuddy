@@ -3,6 +3,10 @@ const FindMovieBuddy = ({buddyfunc, buddies}) => {
   return (
   <div className='movieBuddy collection'>
 	  <div className='header'>Find Your Next Movie Buddy</div><br/>
+     <div className='findFriend'>
+    <input id='findFriendByName' placeholder="Enter friend you'd like to add here here"></input>
+    <a className="waves-effect waves-light btn" onClick={buddyfunc}>send a friend request</a>
+    </div>
 	    <br/>
   <div className="errorMsg" style={{display: 'none'}} id='AlreadyReq2'>Youve already sent a request to this user!</div>
   <div className="errorMsg" style={{display: 'none'}} id='enterRealFriend2'>Please enter something!</div>
@@ -15,3 +19,6 @@ const FindMovieBuddy = ({buddyfunc, buddies}) => {
 )};
 
 window.FindMovieBuddy = FindMovieBuddy;
+
+
+
