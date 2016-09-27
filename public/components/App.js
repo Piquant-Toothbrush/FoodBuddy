@@ -485,6 +485,6 @@ class App extends React.Component {
 }
 
 window.App = App;
-var Url = 'https://reelpals.herokuapp.com';
-// var Url = 'http://127.0.0.1:3000';
+//var Url = 'https://reelpals.herokuapp.com';
+ var Url = 'http://127.0.0.1:3000';
 window.Url = Url;
