@@ -47,11 +47,11 @@ class MyRatings extends React.Component {
       let found=false;
 
       this.state.movies.forEach((el,idx)=>{
-        console.log(this.state.movies[i]);
+        console.log(el);
         if (el.title===this.state.search){
           console.log(this.state.search);
           that.setState({
-            movies: [this.state.movies[i]],
+            movies: [el],
             allRatedMovies: false
           });
           found=true;
