@@ -49,14 +49,6 @@ class SignUp extends React.Component {
       this.setState({
         errorMsg: 'please enter a password'
       });
-    } else if (!this.state.firstName.length) {
-      this.setState({
-        errorMsg: 'please enter your first name'
-      });
-    } else if (!this.state.lastName.length) {
-      this.setState({
-        errorMsg: 'please enter your last name'
-      });
     } else {
       let userObj = { 
         name: this.state.username,
@@ -110,15 +102,6 @@ class SignUp extends React.Component {
             <label for="password" className="active">Password</label>
           </div>
 
-          <div className="input-field col s6">
-            <input placeholder="first name" id="first_name" name='SignUpFirstname' type="text" className="validate" onChange={this.handleChange.bind(this)}/>
-            <label for="first_name" className="active">first name</label>
-          </div>
-
-          <div className="input-field col s6">
-            <input placeholder="last name" id="last_name" name='SignUpLastname' type="text" className="validate" onChange={this.handleChange.bind(this)}/>
-            <label for="last_name" className="active">last name</label>
-          </div>
 
           <div className="errorMsg">{this.state.errorMsg}</div>
           <a className="waves-effect waves-light btn" onClick={this.enterNewUser.bind(this)}>Sign Up!</a>
@@ -130,3 +113,17 @@ class SignUp extends React.Component {
 }
 
 window.SignUp = SignUp;
+
+
+
+
+// <div className="input-field col s6">
+          //   <input placeholder="last name" id="last_name" name='SignUpLastname' type="text" className="validate" onChange={this.handleChange.bind(this)}/>
+          //   <label for="last_name" className="active">last name</label>
+          // </div>
+
+
+          //    <div className="input-field col s6">
+          //   <input placeholder="first name" id="first_name" name='SignUpFirstname' type="text" className="validate" onChange={this.handleChange.bind(this)}/>
+          //   <label for="first_name" className="active">first name</label>
+          // </div>
