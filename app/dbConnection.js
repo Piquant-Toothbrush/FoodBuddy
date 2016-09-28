@@ -58,7 +58,7 @@ db.knex.schema.hasTable('users').then(function(exists) {
     }).then(function (table) {
       console.log('Created Table', table);
     });
-  }
+  }//
 });
 
 db.knex.schema.hasTable('relations').then(function(exists) {
