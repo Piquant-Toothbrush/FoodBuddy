@@ -22,6 +22,7 @@ class MyRatings extends React.Component {
 
 
   getAllRatedMovies() {
+    console.log(this.state.movies);
     $.get(Url + '/getUserRatings')
     .then(userRatedMovies => {
        console.log('response from server', userRatedMovies);
@@ -40,6 +41,7 @@ class MyRatings extends React.Component {
   //this will call search for a movie from external API, do a database query for rating
   //and set the reponse to the movies state
   handleSearch(event) {
+      console.log('this is before the bad request!!', this.state.movies);
     if (event.charCode == 13 || event === 'clicked') {
       var that = this;
 
@@ -60,9 +62,9 @@ class MyRatings extends React.Component {
     var results;
     if (this.state.allRatedMovies === false) {
       lable = 'Back To All Rated Movies';
-      results = (this.state.movies.length === 0) ? (<div className="errorMsg">results cannot be found</div>) : (<div className="updateMsg">all match results:</div>)
+      results = (this.state.movies.length === 0) ? (<div className="errorMsg">Results cannot be found</div>) : (<div className="updateMsg">All match results:</div>)
     } else if (this.state.allRatedMovies && this.state.movies.length === 0) {
-      lable = 'you have not rated any movies';
+      lable = 'You have not rated any movies';
     } else {
       lable = 'All Rated Movies';
     }

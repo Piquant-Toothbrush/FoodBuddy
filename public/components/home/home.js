@@ -99,9 +99,9 @@ class Home extends React.Component {
     if (this.state.recentRelease === false) {
       lable = 'back to recent releases';
       if (this.state.movies.length === 0) {
-        feedbackMsg = (<div className="errorMsg header">no match found, please try another title</div>);
+        feedbackMsg = (<div className="errorMsg header">No match found, please try another title</div>);
       } else {
-        feedbackMsg = (<div className="updatedMsg header">all match results:</div>);
+        feedbackMsg = (<div className="updatedMsg header">All match results</div>);
       }
     }
     return (
