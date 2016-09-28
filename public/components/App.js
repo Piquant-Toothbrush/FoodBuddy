@@ -197,7 +197,7 @@ class App extends React.Component {
     if (targetState==='Friends'){
       // console.log('you switched to friends!!')
       this.getCurrentFriends()
-      this.sendRequest();
+      //this.sendRequest();
     }
 
     if (targetState==='Home'){
