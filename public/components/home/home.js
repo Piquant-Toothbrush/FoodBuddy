@@ -70,7 +70,7 @@ class Home extends React.Component {
   //this will call search for a movie from external API, do a database query for rating
   //and set the reponse to the movies state
   handleSearch(event) {
-    if (event.charCode === 13 || event === 'clicked') {
+    if ((event.charCode === 13 || event === 'clicked') && this.state.search.length) {
       var that = this;
       this.setState({loading:true});
       //this will search TMDB for movie and send it to server to retrive user ratings
