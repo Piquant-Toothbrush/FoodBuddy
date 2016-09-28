@@ -6,6 +6,14 @@ var bodyParser = require('body-parser');
 var sessions = require("client-sessions");
 var cors = require('cors');
 
+app.get('*', function(req,res,next) {
+  if (req.headers['x-forwarded-proto'] !== 'https') {
+    res.redirect('https://' + req.hostname + req.url);
+  } else {
+    next();
+  }
+});
+
 app.use(cors());
 app.use(sessions({
   cookieName: 'mySession', // cookie name dictates the key name added to the request object
@@ -22,11 +30,12 @@ app.use(express.static(__dirname + '/public'));
 app.use('/scripts', express.static(__dirname + '/node_modules'));
 app.use('/compiled', express.static(__dirname + '/compiled'));
 
+
 app.post('/signup', handler.signupUser);
 app.post('/login', handler.signinUser);
 app.get('/login',function(req,res){
 	console.log('loeijwfloejfelifjdp')
-})
+});
 
 //////////////////
 //Handling friends
@@ -65,5 +74,5 @@ app.get('/searchRatedMovie', handler.searchRatedMovie);
 
 var port = process.env.PORT || 3000;
 app.listen(port, function () {
-  console.log('Example app listening on port 3000!');
+  console.log('listening on port 3000!');
 });

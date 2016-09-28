@@ -38,16 +38,16 @@ class MovieListEntry extends React.Component {
     			<h5 className='movieTitle' onClick={() => (this.props.change("SingleMovie", movie))}>{movie.title}</h5>
     			<p className='movieYear'>{movie.release_date}</p>
     			<p className='movieDescription'>{movie.description}</p>
-          <ReviewComponent 
+          <ReviewComponent
             review={movie.review} 
             title={movie.title}
             id={movie.id}/>
           <MovieWatchRequest movie={movie}/>
 
           <div className="ratings row">
-      			<div className='imdbRating col s4'>IMDB rating: <b>{movie.imdbRating}</b></div>
+      			<div className='imdbRating col s4'>IMDB Rating: <b>{movie.imdbRating}/10</b></div>
             <StarRatingComponent movie={movie}/>
-            <div className='avgFriendRatingBlock col s4'>average friend rating: {(movie.friendAverageRating) ? <b>{movie.friendAverageRating}</b> : 'n/a' }</div>
+            <div className='avgFriendRatingBlock col s4'>Average Friend Rating: {(movie.friendAverageRating) ? <b className="friendRating">{movie.friendAverageRating}/5</b> : 'n/a' }</div>
           </div>
           {friendSection}
         </div>

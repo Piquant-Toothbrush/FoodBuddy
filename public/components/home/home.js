@@ -7,7 +7,8 @@ class Home extends React.Component {
       view: 'recentRelease',
       focalMovie: null,
       recentRelease: true,
-      search: ''
+      search: '',
+      loading: true
     };
   }
 
@@ -32,13 +33,13 @@ class Home extends React.Component {
   getRecentReleasesInitialize() {
     $.get(Url + '/recentRelease')
     .then(moviesWithRatings => {
-      console.log('response from server', moviesWithRatings);
+      // console.log('response from server', moviesWithRatings);
       this.setState({
         movies: moviesWithRatings,
-        recentRelease: true
+        recentRelease: true,
+        loading: false
       });
-    })
-    
+    });
   }
 
   //function that takes movies from external API and query the database for ratings
@@ -50,15 +51,15 @@ class Home extends React.Component {
         recentRelease: false
       });
     } else {
-      console.log('posting to:', Url + '/getMultipleMovieRatings');
+      // console.log('posting to:', Url + '/getMultipleMovieRatings');
       $.post(Url + '/getMultipleMovieRatings', { movies: moviesFromOMDB })
       .done(moviesWithRatings => {
-        console.log('response from server', moviesWithRatings);
+        // console.log('response from server', moviesWithRatings);
         this.setState({
           movies: moviesWithRatings,
           recentRelease: false
         });
-      })
+      });
     }
   }
 
@@ -69,9 +70,9 @@ class Home extends React.Component {
   //this will call search for a movie from external API, do a database query for rating
   //and set the reponse to the movies state
   handleSearch(event) {
-    if (event.charCode == 13 || event === 'clicked') {
+    if (event.charCode === 13 || event === 'clicked') {
       var that = this;
-
+      this.setState({loading:true});
       //this will search TMDB for movie and send it to server to retrive user ratings
       $.ajax({
         url: "https://api.themoviedb.org/3/search/movie",
@@ -85,26 +86,27 @@ class Home extends React.Component {
         success: function(response) {
           var sorted = _.sortBy(response.results, 'imdbRating');
           that.getUserRatingsForMovies(sorted);
+          setTimeout(()=>{that.setState({loading:false})},1000)
         }
       });
     }
   }
 
   render() {
-    
-    var lable = 'recent releases';
+
+    var lable = 'Recent Releases';
     var feedbackMsg = '';
     if (this.state.recentRelease === false) {
       lable = 'back to recent releases';
       if (this.state.movies.length === 0) {
-        feedbackMsg = (<div className="errorMsg">no match found, please try another title</div>)
+        feedbackMsg = (<div className="errorMsg">no match found, please try another title</div>);
       } else {
-        feedbackMsg = (<div className="updatedMsg">all match results:</div>)
+        feedbackMsg = (<div className="updatedMsg">all match results:</div>);
       }
     }
-
     return (
       <div className='Home collection'>
+      {this.state.loading ? <div className="progress loadingBar"> <div className="indeterminate"></div> </div> : null}
         <div className='header' onClick={this.getRecentReleasesInitialize.bind(this)}>{lable}</div>
         <div className='searchMovie'>
           <input type ='text' id='movieInput' 
@@ -117,10 +119,10 @@ class Home extends React.Component {
         </div>
         {feedbackMsg}
         <MovieList movies={this.state.movies}
-        change={this.props.change.bind(this)}
+          change={this.props.change.bind(this)}
         />
       </div>
-    )
+    );
   }
 }
 
