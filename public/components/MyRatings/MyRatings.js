@@ -58,6 +58,8 @@ class MyRatings extends React.Component {
         }
       });
         if (!found){
+          $("#movNotInColl").fadeIn(1000);
+          $("#movNotInColl").fadeOut(1000);
          console.log('should now show them message that there is no such movie');
        }    
       }
@@ -88,6 +90,7 @@ class MyRatings extends React.Component {
             onChange={this.handleChange.bind(this)}
             onKeyPress={this.handleSearch.bind(this)}/>
           <a className="waves-effect waves-light btn" onClick={() => this.handleSearch.bind(this)('clicked')}>search</a>
+          <h5 id="movNotInColl" style={{display: 'none'}}>{this.state.search} isn't in your collection</h5>
         </div>
         {results}
         <MovieList movies={this.state.movies}
