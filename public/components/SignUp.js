@@ -78,7 +78,7 @@ class SignUp extends React.Component {
         this.props.setCurrentUser(this.state.username);
       })
       .catch(err=> {
-        // console.log(err);
+         console.log(err);
         this.setState({
           errorMsg: 'username already exist, please use a different username'
         });
