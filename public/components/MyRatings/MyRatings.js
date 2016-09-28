@@ -41,21 +41,21 @@ class MyRatings extends React.Component {
   //this will call search for a movie from external API, do a database query for rating
   //and set the reponse to the movies state
   handleSearch(event) {
-      console.log('this is before the bad request!!', this.state.movies);
+
     if (event.charCode == 13 || event === 'clicked') {
       var that = this;
-
-      //this will search database
-    $.get(Url + '/searchRatedMovie', {title: this.state.search})
-    .then(searchResults => {
-       console.log('response from server', searchResults);
-      this.setState({
-        movies: searchResults,
-        allRatedMovies: false
-      });
-    })
+      for (var i = 0; i < this.state.movies.length; i++) {
+        if (this.state.search === this.state.movies[i].title) {
+          console.log(this.state.search.title);
+          that.setState({
+            movies: searchResults,
+            allRatedMovies: false
+          });
+        }
+      }
     }
   }
+
 
   render() {
     var lable;
