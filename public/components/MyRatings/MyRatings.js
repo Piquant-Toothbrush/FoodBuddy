@@ -47,9 +47,9 @@ class MyRatings extends React.Component {
       for (var i = 0; i < this.state.movies.length; i++) {
         console.log(this.state.movies[i]);
         if (this.state.search === this.state.movies[i].title) {
-          console.log(this.state.search.title);
+          console.log(this.state.search);
           that.setState({
-            movies: this.state.movies[i],
+            movies: [this.state.movies[i]],
             allRatedMovies: false
           });
         } else {
