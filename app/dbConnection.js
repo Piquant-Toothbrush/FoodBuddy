@@ -11,7 +11,7 @@ var knex = require('knex')({
 });
 
 var db = require('bookshelf')(knex);
-
+//
 db.knex.schema.hasTable('movies').then(function(exists) {
   if (!exists) {
     db.knex.schema.createTable('movies', function (movie) {
