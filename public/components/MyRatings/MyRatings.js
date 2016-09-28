@@ -43,21 +43,26 @@ class MyRatings extends React.Component {
   handleSearch(event) {
     console.log(this.state.search,this.state.movies);
     if (event.charCode == 13 || event === 'clicked') {
-      var that = this;
-      for (var i = 0; i < this.state.movies.length; i++) {
+      const that = this;
+      let found=false;
+
+      this.state.movies.forEach((el,idx)=>{
         console.log(this.state.movies[i]);
-        if (this.state.search === this.state.movies[i].title) {
+        if (el.title===this.state.search){
           console.log(this.state.search);
           that.setState({
             movies: [this.state.movies[i]],
             allRatedMovies: false
           });
-        } else {
-          console.log('should now show them message that there is no such movie');
+          found=true;
         }
+      });
+        if (!found){
+         console.log('should now show them message that there is no such movie');
+       }    
       }
     }
-  }
+  
 
 
   render() {
