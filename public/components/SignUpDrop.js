@@ -11,7 +11,7 @@ class SignUpDrop extends React.Component {
     var fd = ('file', this.refs.file.getDOMNode().file[0]);
 
     $.ajax({
-      url: 'http://127.0.0.1:3000/Upload',
+      url: 'https://floating-ravine-23725.herokuapp.com/Upload',
       data: fd,
       processData: false,
       contentType: false,
