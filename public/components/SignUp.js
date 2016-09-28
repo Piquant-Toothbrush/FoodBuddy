@@ -65,7 +65,7 @@ class SignUp extends React.Component {
         lastName: this.state.lastName
       };
 
-      $.post(Url + '/signup', userObj)
+      $.post('/signup', userObj)
       .then(response => {
         //after signup should prompt user to select their favorite three movies
         this.setState({
