@@ -1,10 +1,10 @@
 var knex = require('knex')({
   client: 'mysql',
   connection: {
-    host: process.env.DATABASE_HOST || '127.0.0.1',
-    user: process.env.DATABASE_USER || 'root',
-    password: process.env.DATABASE_PASSWORD || '12345',
-    database: process.env.DATABASE_NAME || 'MainDatabase',
+    host: "mysql://b6e72659e4f62e:4b75d43f@us-cdbr-iron-east-04.cleardb.net/heroku_8743521ae68d583?reconnect=true",
+    user: 'b6e72659e4f62e',
+    password:  '4b75d43f',
+    database: 'heroku_8743521ae68d583',
     charset  : 'utf8'
   },
   pool: { min: 0, max: 6 }
