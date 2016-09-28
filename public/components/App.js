@@ -482,4 +482,4 @@ console.log("notifs!",pFR, rR);
 window.App = App;
 var Url = 'https://floating-ravine-23725.herokuapp.com';
 // var Url = 'http://127.0.0.1:3000';
-window.Url = Url;
+window.Url = Url
