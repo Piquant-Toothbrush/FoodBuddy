@@ -49,9 +49,11 @@ class MyRatings extends React.Component {
         if (this.state.search === this.state.movies[i].title) {
           console.log(this.state.search.title);
           that.setState({
-            movies: searchResults,
+            movies: this.state.movies[i],
             allRatedMovies: false
           });
+        } else {
+          console.log('should now show them message that there is no such movie');
         }
       }
     }
