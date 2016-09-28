@@ -1,7 +1,7 @@
 var knex = require('knex')({
   client: 'mysql',
   connection: {
-    host: process.env.DATABASE_HOST || '127.0.0.222',
+    host: 'https://floating-ravine-23725.herokuapp.com',
     user: process.env.DATABASE_USER || 'root',
     password: process.env.DATABASE_PASSWORD || '12345',
     database: process.env.DATABASE_NAME || 'MainDatabase',
