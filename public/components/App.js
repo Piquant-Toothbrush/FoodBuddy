@@ -80,7 +80,6 @@ class App extends React.Component {
   findMovieBuddies() {
    var that=this;
     $.post(Url + '/findMovieBuddies',{dummy:'info'},(resp, err)=> {
-      console.log(that,this);
       const sorted=resp.sort((a,b)=>(b[1]-a[1]));
       const myFriends=that.myFriends;
        const uniqueFriends=[];
