@@ -42,6 +42,7 @@ class App extends React.Component {
               }
 
        const final= a.sort((a,b)=>{return b[1]-a[1]});
+       console.log('this is what GCF is setting as all friends', final);
       this.setState({
         myFriends:final
       })
@@ -188,7 +189,7 @@ class App extends React.Component {
   changeViews(targetState) {
     // console.log(this.state);
 
-    if (targetState==='Friends'){
+    if (targetState==='Friends' ||targetState==='FNMB'){
       // console.log('you switched to friends!!')
       this.getCurrentFriends()
       //this.sendRequest();
@@ -248,7 +249,7 @@ class App extends React.Component {
     
 
     // console.log('this should also be my friends',person, currFriends,friends1,friends2)
-    console.log('these should be my current friends, and I should not be able ot send to them', friends1,a,person);
+    console.log('these should be my current friends, and I should not be able ot send to them', this.state.myFriends, friends1,a,person);
     if (friends1.indexOf(person)!== -1 && friends1.length!==0){
       $(document).scrollTop(0)
       console.log('case caught 254');
