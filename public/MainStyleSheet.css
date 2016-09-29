@@ -207,6 +207,10 @@ textarea.materialize-textarea:focus:not([readonly]) {
   margin-left: 20px;
 }
 
+.updateMsg {
+  text-align: center;
+}
+
 
 /*
   ========================================

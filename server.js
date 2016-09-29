@@ -72,6 +72,10 @@ app.post('/getFriendRatings', handler.handleGetFriendRatings);
 app.get('/searchRatedMovie', handler.searchRatedMovie);
 
 
+app.get('*', function(){
+  res.redirect("/login")
+});
+
 var port = process.env.PORT || 3000;
 app.listen(port, function () {
   console.log('Listening on port 3000!');
