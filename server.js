@@ -73,7 +73,7 @@ app.get('/searchRatedMovie', handler.searchRatedMovie);
 
 
 app.get('/*', function(req, res) {
-    res.redirect('/login')
+    res.redirect('/');
 });
 
 var port = process.env.PORT || 3000;
