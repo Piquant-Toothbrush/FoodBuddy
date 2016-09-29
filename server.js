@@ -72,8 +72,8 @@ app.post('/getFriendRatings', handler.handleGetFriendRatings);
 app.get('/searchRatedMovie', handler.searchRatedMovie);
 
 
-app.get('*', function(){
-  res.redirect("/login")
+app.get('/*', function(req, res) {
+    res.redirect('/login')
 });
 
 var port = process.env.PORT || 3000;
