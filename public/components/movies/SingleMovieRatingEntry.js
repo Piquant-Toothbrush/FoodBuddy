@@ -29,7 +29,7 @@ class SingleMovieRatingEntry extends React.Component {
         </div>
         <div id="Friend" className="MovieEntryFriend col s9">
           <div className="top">
-            <a className='friendEntryIndividual individual'><div className="friendName" onClick={that.props.fof}>{rating.friendUserName}</div></a>
+            <a className='friendEntryIndividual individual'><div className="friendName" onClick={()=>that.props.fof(rating.friendUserName)}>{rating.friendUserName}</div></a>
           </div>
           <div className="friendReview">{(rating.review === null) ? rating.friendUserName + ' did not leave a review' : rating.friendUserName + "'s review: " + rating.review}</div>
           <div className="friendRating">{(rating.score === null) ? rating.friendUserName + ' have not rate the movie yet' : rating.friendUserName + "'s rating is: " + rating.score}</div>
