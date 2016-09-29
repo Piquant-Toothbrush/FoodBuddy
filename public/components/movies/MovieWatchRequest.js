@@ -182,11 +182,11 @@ class MovieWatchRequest extends React.Component {
 
 var WatchRequestFriendEntry = (props) => {
 
-  return (<li class="friendToAsk"><span>{props.friend}</span><a className="btn-floating btn-small waves-effect waves-light red" onClick={() => props.handleAddFriend(props.friend)}><i class="material-icons">+</i></a></li>)
+  return (<li className="friendToAsk"><span>{props.friend}</span><a className="btn-floating btn-small waves-effect waves-light red" onClick={() => props.handleAddFriend(props.friend)}><i class="material-icons">+</i></a></li>)
 };
 
 var WatchRequestStashEntry = (props) => {
-  return (<li class="friendToAsk"><span>{props.friend}</span><a className="btn-floating btn-small waves-effect waves-light red" onClick={() => props.handleRemoveFriend(props.friend)}><i class="material-icons">-</i></a></li>)
+  return (<li className="friendToAsk"><span>{props.friend}</span><a className="btn-floating btn-small waves-effect waves-light red" onClick={() => props.handleRemoveFriend(props.friend)}><i class="material-icons">-</i></a></li>)
 };
 
 
