@@ -30,6 +30,7 @@ class App extends React.Component {
 
   }
 
+
   getCurrentFriends() {
 
     // console.log('testinggg');
@@ -46,7 +47,7 @@ class App extends React.Component {
       this.setState({
         myFriends:final
       })
-      // console.log('thes are my friends!!!!!!!!!!!!!!!!!',this.state.myFriends)
+       console.log('thes are my friends!!!!!!!!!!!!!!!!!',this.state.myFriends);
     })
   }
 
@@ -96,8 +97,7 @@ class App extends React.Component {
         potentialMovieBuddies:uniqueFriends
       })
 
-      // console.log(this.state.myFriends,this.state.potentialMovieBuddies);
-
+   this.getCurrentFriends();
     })
   }
 
@@ -189,7 +189,7 @@ class App extends React.Component {
   changeViews(targetState) {
     // console.log(this.state);
 
-    if (targetState==='Friends' ||targetState==='FNMB'){
+    if (targetState==='Friends' || targetState==='FNMB'){
       // console.log('you switched to friends!!')
       this.getCurrentFriends()
       //this.sendRequest();
