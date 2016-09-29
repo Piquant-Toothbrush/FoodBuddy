@@ -11,7 +11,7 @@ class SingleMovieRating extends React.Component {
 
   componentDidMount() {
     this.getFriendsRating(this.state.movie);
-    console.log("should be ununiq", this.state.friendRatings);
+
   }
 
   componentWillReceiveProps() {
@@ -43,7 +43,7 @@ class SingleMovieRating extends React.Component {
     var that = this;
     $.post(Url + '/getFriendRatings', {movie: inputMovie})
     .then(function(response) {
-      // console.log('response from server getFriendsRating: ', response);
+       console.log('response from server getFriendsRating: ', response);
       that.setState({
         friendRatings: response
       })
