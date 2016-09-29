@@ -6,7 +6,6 @@ class App extends React.Component {
     this.sendWatchRequest=this.sendWatchRequest.bind(this);
     this.getFriends=this.getCurrentFriends.bind(this);
     this.myFriends=this.state.myFriends;
-    this.listPotentials=this.listPotentials.bind(this); 
     this.logout=this.logout.bind(this)  
     this.sendRequest=this.sendRequest.bind(this);
     this.changeViews=this.changeViews.bind(this);
@@ -275,7 +274,7 @@ class App extends React.Component {
       });
 
 
-      if ( document.getElementById('findFriendByName')!==null){
+      if (document.getElementById('findFriendByName')!==null){
         document.getElementById('findFriendByName').value = '';
       }
     }
