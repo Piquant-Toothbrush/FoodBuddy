@@ -71,12 +71,12 @@ class App extends React.Component {
     var that=this;
     $.post(Url + '/decline',{personToDecline:personToDecline, movie: movie},(resp, err)=> {
       // console.log('this is the state after declining friend, ', this.state);
-        let pending=this.state.requestResponses;
+        let pending=this.state.pendingFriendRequests;
         let reqs = pending.map((a)=>(a.requestor));
         console.log('before', pending, reqs, personToDecline);
         pending.splice(reqs.indexOf(personToDecline),1);
-        this.setState({requestResponses:pending});
-        console.log('after', this.state.requestResponses);
+        this.setState({pendingFriendRequests:pending});
+        console.log('after', this.state.pendingFriendRequests);
 
       //that.listPendingFriendRequests();//
     });
