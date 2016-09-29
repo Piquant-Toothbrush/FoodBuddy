@@ -48,7 +48,7 @@ class MyRatings extends React.Component {
       const moviesThatMatch=[]
 
       this.state.movies.forEach((el,idx)=>{
-        console.log(el);
+        console.log('here it is', el.title.toLowerCase(),this.state.search.toLowerCase());
         if (el.title.toLowerCase().indexOf(this.state.search.toLowerCase())>0){
           console.log(this.state.search);
           moviesThatMatch.push(el);
