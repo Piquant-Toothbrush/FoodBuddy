@@ -251,6 +251,7 @@ class App extends React.Component {
     console.log('these should be my current friends, and I should not be able ot send to them', friends1,a,person);
     if (friends1.indexOf(person)!== -1 && friends1.length!==0){
       $(document).scrollTop(0)
+      console.log('case caught 254');
       $("#AlreadyReq,#AlreadyReq2").fadeIn(1000);
       $("#AlreadyReq,#AlreadyReq2").fadeOut(1000);
         
@@ -266,9 +267,9 @@ class App extends React.Component {
       $.post(Url + '/sendRequest',{name:person}, (resp, err)=> {
        
        console.log('should include everybody to whom a req has ever been sent, short of most recent', resp);
-
           $(document).scrollTop(0);
           if (person.indexOf(resp)>-1){
+            console.log('case caught 272')
             $("#AlreadyReq,#AlreadyReq2").fadeIn(1000);
             $("#AlreadyReq,#AlreadyReq2").fadeOut(1000);
           } else {
