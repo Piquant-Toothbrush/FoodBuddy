@@ -45,15 +45,13 @@ class MyRatings extends React.Component {
     if (event.charCode == 13 || event === 'clicked') {
       const that = this;
       let found=false;
+      const moviesThatMatch=[]
 
       this.state.movies.forEach((el,idx)=>{
         console.log(el);
-        if (el.title===this.state.search){
+        if (el.title.toLowerCase().indexOf(this.state.search.toLowerCase())>0){
           console.log(this.state.search);
-          that.setState({
-            movies: [el],
-            allRatedMovies: false
-          });
+          moviesThatMatch.push(el);
           found=true;
         }
       });
@@ -61,6 +59,11 @@ class MyRatings extends React.Component {
           $("#movNotInColl").fadeIn(1000);
           $("#movNotInColl").fadeOut(1000);
          console.log('should now show them message that there is no such movie');
+       } else {
+        that.setState({
+            movies: moviesThatMatch,
+            allRatedMovies: false
+          });
        }    
       }
     }

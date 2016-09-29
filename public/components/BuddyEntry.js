@@ -5,7 +5,7 @@ const BuddyEntry = ({Buddy, BuddyScore,buddyfunc, idx}) => (
     </div>
     <div id="Friend" className="buddy col s9">
    		<h3 className="buddyName">{Buddy}</h3>
-      <div className="buddyCompatibility">{(BuddyScore === 'Nothing to compare') ? `Compatability: ${Buddy} has not rated any movies` : `Compatability: ${BuddyScore}`}</div>
+      <div className="buddyCompatibility">{(BuddyScore === 'Nothing to compare') ? `Compatability: ${Buddy} has not rated any movies` : `Compatability: ${BuddyScore}%`}</div>
    		<a  id={idx} className='waves-effect waves-light btn' onClick={()=>{buddyfunc(Buddy, idx); console.log('clicked the right oen')}}>Send friend request</a> 
       <div id="friendReqConf"></div>
   	</div>
@@ -14,4 +14,3 @@ const BuddyEntry = ({Buddy, BuddyScore,buddyfunc, idx}) => (
 
 
 window.BuddyEntry = BuddyEntry;
-
