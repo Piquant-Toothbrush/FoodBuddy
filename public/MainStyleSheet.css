@@ -285,10 +285,6 @@ textarea {
   margin-top: 50px;
 }
 
-.activeWatchRequest a {
-  position: absolute;
-  display: block;
-}
 
 .activeWatchRequest li {
   position: relative;
