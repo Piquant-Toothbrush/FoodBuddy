@@ -570,3 +570,15 @@ a.btn-floating.btn-small.waves-effect.waves-light.red {
     border: 1px solid white;
     display: block;
 }
+
+a.closeWatchRequest {
+    clear: all;
+    float: left;
+    position: relative;
+}
+
+.activeWatchRequest a {
+    position: absolute;
+    right: 0;
+    display: inline;
+}
