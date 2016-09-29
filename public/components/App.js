@@ -241,21 +241,14 @@ class App extends React.Component {
       var person = a || 'test';
     }
     const currFriends=this.state.myFriends;
-    const friends1=[];
-    const friends2=[]
-    for (var i=0;i<currFriends.length;i++){
-      // console.log('line 251',currFriends[i])
-      friends1.push(currFriends[i][0]);
-      friends2.push(currFriends[i][0])
-    }
-
-    for (var i=0;i<this.state.requestsOfCurrentUser.length;i++){
-      friends1.push(this.state.requestsOfCurrentUser[i])
-    }
+    const friends1=currFriends.map((friendInfo)=>(friendInfo[0]));
+    this.state.requestsOfCurrentUser.forEach((req)=>{
+      friends1.push(req)
+    })
+    
 
     // console.log('this should also be my friends',person, currFriends,friends1,friends2)
-
-    //console.log('tof',friends1.indexOf(person)!== -1, friends1.length!==0)
+    console.log('these should be my current friends, and I should not be able ot send to them', friends1);
     if (friends1.indexOf(person)!== -1 && friends1.length!==0){
       $(document).scrollTop(0)
       $("#AlreadyReq,#AlreadyReq2").fadeIn(1000);
@@ -272,14 +265,23 @@ class App extends React.Component {
 // console.log('person is defined?',person);
       $.post(Url + '/sendRequest',{name:person}, (resp, err)=> {
        
+       console.log('should include everybody to whom a req has ever been sent, short of most recent', resp);
+
+          $(document).scrollTop(0);
+          if (person.indexOf(resp)>-1){
+            $("#AlreadyReq,#AlreadyReq2").fadeIn(1000);
+            $("#AlreadyReq,#AlreadyReq2").fadeOut(1000);
+          } else {
+            $("#reqSent,#reqSent2").fadeIn(1000);
+            $("#reqSent,#reqSent2").fadeOut(1000);
+          }
+
           this.setState({
             requestsOfCurrentUser:resp.concat([person])
           })
-          // console.log('line 281',this.state.requestsOfCurrentUser);
-          $(document).scrollTop(0)
-        $("#reqSent,#reqSent2").fadeIn(1000);
-        $("#reqSent,#reqSent2").fadeOut(1000);
       });
+
+
       if ( document.getElementById('findFriendByName')!==null){
         document.getElementById('findFriendByName').value = '';
       }
@@ -454,7 +456,6 @@ console.log("notifs!",pFR, rR);
         <div>
             {nav}
           <FindMovieBuddy 
-
             buddyfunc={this.buddyRequest} 
             buddies={this.state.potentialMovieBuddies} 
           />
