@@ -162,8 +162,8 @@ class MovieWatchRequest extends React.Component {
             {stash}
           </div>
           <textarea className="messageBox" cols="40" rows="5" onChange={this.handleMsg.bind(this)} placeholder="Add a message" maxlength="255"></textarea>
-          <button className="watchRequest" onClick={this.handleSubmit.bind(this)}>Send Watch Request</button>
-          <button className="closeWatchRequest" onClick={this.handleClick.bind(this)}>Close Watch Request</button>
+          <a className="watchRequest waves-effect waves-light btn" onClick={this.handleSubmit.bind(this)}>Send Watch Request</a>
+          <a className="closeWatchRequest waves-effect waves-light btn" onClick={this.handleClick.bind(this)}>Close Watch Request</a>
         </div>
       )
     } else {
