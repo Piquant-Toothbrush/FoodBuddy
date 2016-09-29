@@ -2,7 +2,6 @@
 class App extends React.Component {
   constructor(props) {
     super(props);
-
     this.state = startingState;
     this.sendWatchRequest=this.sendWatchRequest.bind(this);
     this.getFriends=this.getCurrentFriends.bind(this);
@@ -10,24 +9,18 @@ class App extends React.Component {
     this.listPotentials=this.listPotentials.bind(this); 
     this.logout=this.logout.bind(this)  
     this.sendRequest=this.sendRequest.bind(this);
-    //this.onClick=this.changeViews.bind(this);
     this.changeViews=this.changeViews.bind(this);
     this.setCurrentUser=this.setCurrentUser.bind(this);
     this.getMovie=this.getMovie.bind(this);
     this.acceptFriend= this.acceptFriend.bind(this);
-    //this.decline=this.declineFriend.bind(this);
     this.declineFriend=this.declineFriend.bind(this);
-    //this.listRequests=this.listPendingFriendRequests.bind(this);
-    //this.remove=this.removeRequest.bind(this);
     this.changeViewsMovie=this.changeViewsMovie.bind(this);
-    //this.buddyfunc=this.buddyRequest.bind(this);
     this.changeViewsFriends=this.changeViewsFriends.bind(this);
     this.findMovieBuddies=this.findMovieBuddies.bind(this);
     this.buddyRequest=this.buddyRequest.bind(this);
     this.listPendingFriendRequests=this.listPendingFriendRequests.bind(this);
     this.focusOnFriend=this.focusOnFriend.bind(this);
     this.removeRequest=this.removeRequest.bind(this);
-
   }
 
 
@@ -52,10 +45,7 @@ class App extends React.Component {
   }
 
   acceptFriend(personToAccept, movie) {
-    // $('button').on('click',function() {
-    //   console.log($(this).html());
-    // })
-    // console.log(final +'should be accepted, for movie....', movie)
+  
     console.log('calling aF');
     var that=this;
     $.post(Url + '/accept',{personToAccept:personToAccept, movie: movie},(resp,err)=> {
@@ -189,7 +179,7 @@ class App extends React.Component {
   changeViews(targetState) {
     // console.log(this.state);
 
-    if (targetState==='Friends' || targetState==='FNMB'){
+    if (targetState==='Friends'){
       // console.log('you switched to friends!!')
       this.getCurrentFriends()
       //this.sendRequest();
@@ -241,15 +231,16 @@ class App extends React.Component {
       console.log('part 2');
       var person = a || 'test';
     }
+
     const currFriends=this.state.myFriends;
-    const friends1=currFriends.map((friendInfo)=>(friendInfo[0]));
-    this.state.requestsOfCurrentUser.forEach((req)=>{
-      friends1.push(req)
+    const friends1=currFriends.map(friendInfo=>(friendInfo[0]));
+    this.state.requestsOfCurrentUser.forEach(req=>{
+      friends1.push(req);
     })
     
 
     // console.log('this should also be my friends',person, currFriends,friends1,friends2)
-    console.log('these should be my current friends, and I should not be able ot send to them', this.state.myFriends, friends1,a,person);
+    console.log('these should be my current friends and inMem requests and I should not be able ot send to them', friends1);
     if (friends1.indexOf(person)!== -1 && friends1.length!==0){
       $(document).scrollTop(0)
       console.log('case caught 254');
@@ -324,17 +315,12 @@ class App extends React.Component {
         friendToFocusOn: friend
       });
 
-      $.get(Url + '/getFriendUserRatings',{friendName: friend}, response=> {
+      $.get(Url + '/getFriendUserRatings', {friendName: friend}, response => {
         this.setState({
           individualFriendsMovies: response
         });
-
       });
     }
-
-  listPotentials() {
-    // console.log('this should list potential friends')
-  }
 
   removeRequest(person, self, movie) {
     console.log('trying to rem req');
