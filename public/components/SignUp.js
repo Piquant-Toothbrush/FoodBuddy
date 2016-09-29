@@ -2,7 +2,7 @@ class SignUp extends React.Component {
 
   constructor(props) {
     super(props);
-
+//
     this.state = {
       username: '',
       password: '',
@@ -117,13 +117,3 @@ window.SignUp = SignUp;
 
 
 
-// <div className="input-field col s6">
-          //   <input placeholder="last name" id="last_name" name='SignUpLastname' type="text" className="validate" onChange={this.handleChange.bind(this)}/>
-          //   <label for="last_name" className="active">last name</label>
-          // </div>
-
-
-          //    <div className="input-field col s6">
-          //   <input placeholder="first name" id="first_name" name='SignUpFirstname' type="text" className="validate" onChange={this.handleChange.bind(this)}/>
-          //   <label for="first_name" className="active">first name</label>
-          // </div>
