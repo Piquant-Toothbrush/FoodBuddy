@@ -557,20 +557,19 @@ a.btn-floating.btn-small.waves-effect.waves-light.red {
   width: 15%;
 }
 
-
 a.watchRequest {
-    position: absolute;
-    right: 20em;
-    border: 1px solid white;
-    display: block;
+  position: absolute;
+  border: 1px solid white;
+  display: block;
 }
 
 a.closeWatchRequest {
-    clear: all;
-    float: left;
-    position: relative;
+ position: relative;
+ border: 1px solid white;
+ left: 50%;
+ float: left;
 }
 
 .activeWatchRequest a {
-    position: absolute;
+  position: absolute;
 }
