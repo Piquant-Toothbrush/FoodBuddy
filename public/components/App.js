@@ -289,7 +289,7 @@ class App extends React.Component {
   }
 
   listPendingFriendRequests() {
-    // console.log('this should list friend reqs')
+     console.log('this should list friend reqs')
     $.post(Url + '/listRequests', (response, error)=> {
       const pFR=[];
       const rR=[];
@@ -306,7 +306,7 @@ class App extends React.Component {
         }
       }
       //
-console.log("notifs!",pFR, rR);
+console.log("Totality of inbox",pFR, rR);
       this.setState({
         pendingFriendRequests:pFR,
         requestResponses:rR
