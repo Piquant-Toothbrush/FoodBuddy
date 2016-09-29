@@ -54,6 +54,8 @@
     "node": "6.0.0"
   },
   "devDependencies": {
-    "babel-preset-minify-es2015": "0.0.3"
+    "babel-preset-minify-es2015": "0.0.3",
+    "grunt": "^1.0.1",
+    "grunt-shell": "^2.0.0"
   }
 }

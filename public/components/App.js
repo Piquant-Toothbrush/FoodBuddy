@@ -4,33 +4,28 @@ class App extends React.Component {
     super(props);
 
     this.state = startingState;
-
     this.sendWatchRequest=this.sendWatchRequest.bind(this);
-    this.fof= this.focusOnFriend.bind(this);
     this.getFriends=this.getCurrentFriends.bind(this);
     this.myFriends=this.state.myFriends;
     this.listPotentials=this.listPotentials.bind(this); 
     this.logout=this.logout.bind(this)  
     this.sendRequest=this.sendRequest.bind(this);
-    this.find=this.findMovieBuddies.bind(this);
-    this.onClick=this.changeViews.bind(this);
+    //this.onClick=this.changeViews.bind(this);
     this.changeViews=this.changeViews.bind(this);
     this.setCurrentUser=this.setCurrentUser.bind(this);
     this.getMovie=this.getMovie.bind(this);
-    this.logout= this.logout.bind(this);
     this.acceptFriend= this.acceptFriend.bind(this);
-    this.decline=this.declineFriend.bind(this);
+    //this.decline=this.declineFriend.bind(this);
     this.declineFriend=this.declineFriend.bind(this);
-    this.listRequests=this.listPendingFriendRequests.bind(this);
-    this.remove=this.removeRequest.bind(this);
+    //this.listRequests=this.listPendingFriendRequests.bind(this);
+    //this.remove=this.removeRequest.bind(this);
     this.changeViewsMovie=this.changeViewsMovie.bind(this);
-    this.buddyfunc=this.buddyRequest.bind(this);
+    //this.buddyfunc=this.buddyRequest.bind(this);
     this.changeViewsFriends=this.changeViewsFriends.bind(this);
     this.findMovieBuddies=this.findMovieBuddies.bind(this);
     this.buddyRequest=this.buddyRequest.bind(this);
     this.listPendingFriendRequests=this.listPendingFriendRequests.bind(this);
     this.focusOnFriend=this.focusOnFriend.bind(this);
-    this.listRequests=this.listPendingFriendRequests.bind(this);
     this.removeRequest=this.removeRequest.bind(this);
 
   }
