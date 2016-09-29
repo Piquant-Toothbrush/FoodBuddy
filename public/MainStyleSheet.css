@@ -567,6 +567,7 @@ a.closeWatchRequest {
  position: relative;
  border: 1px solid white;
  left: 50%;
+ display:block;
  float: left;
 }
 
