@@ -44,8 +44,19 @@ class SingleMovieRating extends React.Component {
     $.post(Url + '/getFriendRatings', {movie: inputMovie})
     .then(function(response) {
        console.log('response from server getFriendsRating: ', response);
+       const uniqResponses = [];
+       const friendName = {};
+       for (let i=0; i<response.length; i++){
+         if (!friendName[response[i].friendUserName]){
+          friendName[response[i].friendUserName] = null;
+          uniqResponses.push(response[i]);
+         }
+       }
+
+
+
       that.setState({
-        friendRatings: response
+        friendRatings: uniqResponses
       })
     })
     .catch(function(err) {
