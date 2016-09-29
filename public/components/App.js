@@ -57,7 +57,7 @@ class App extends React.Component {
       this.setState({pendingFriendRequests:newSetOfReqs});
       console.log('after', pending);
 
-      that.listPendingFriendRequests();
+      //that.listPendingFriendRequests();
     })
     
     // console.log('refreshed inbox, should delete friend request on the spot instead of moving')
