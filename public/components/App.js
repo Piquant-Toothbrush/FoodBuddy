@@ -248,7 +248,7 @@ class App extends React.Component {
     
 
     // console.log('this should also be my friends',person, currFriends,friends1,friends2)
-    console.log('these should be my current friends, and I should not be able ot send to them', friends1);
+    console.log('these should be my current friends, and I should not be able ot send to them', friends1,a,person);
     if (friends1.indexOf(person)!== -1 && friends1.length!==0){
       $(document).scrollTop(0)
       $("#AlreadyReq,#AlreadyReq2").fadeIn(1000);
@@ -307,7 +307,7 @@ class App extends React.Component {
       }
       //
       console.log("Totality of inbox",pFR, rR);
-      
+
       this.setState({
         pendingFriendRequests:pFR,
         requestResponses:rR
