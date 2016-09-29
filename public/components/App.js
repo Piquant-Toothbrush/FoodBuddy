@@ -50,6 +50,13 @@ class App extends React.Component {
     var that=this;
     $.post(Url + '/accept',{personToAccept:personToAccept, movie: movie},(resp,err)=> {
       console.log('it came back!', that);
+      let pending=this.state.pendingFriendRequests;
+
+      console.log('before', pending);
+      const newSetOfReqs=pending.splice(pending.indexOf(personToAccept),1);
+      this.setState({pendingFriendRequests:newSetOfReqs});
+      console.log('after', pending);
+
       that.listPendingFriendRequests();
     })
     
