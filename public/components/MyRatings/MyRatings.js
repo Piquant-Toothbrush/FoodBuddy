@@ -90,7 +90,7 @@ class MyRatings extends React.Component {
             onChange={this.handleChange.bind(this)}
             onKeyPress={this.handleSearch.bind(this)}/>
           <a className="waves-effect waves-light btn" onClick={() => this.handleSearch.bind(this)('clicked')}>search</a>
-          <h5 id="movNotInColl" style={{display: 'none'}}>{this.state.search} isn't in your collection</h5>
+          <h5 id="movNotInColl" style={{display: 'none', color:"red"}}>{this.state.search} isn't in your collection</h5>
         </div>
         {results}
         <MovieList movies={this.state.movies}
