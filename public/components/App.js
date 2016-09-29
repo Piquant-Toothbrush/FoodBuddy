@@ -52,8 +52,12 @@ class App extends React.Component {
       console.log('it came back!', that);
       let pending=this.state.pendingFriendRequests;
 
+
+      let reqs = pending.map((a)=>(a.requestor));
+
+
       console.log('before', pending, personToAccept);
-      const newSetOfReqs=pending.splice(pending.indexOf(personToAccept),1);
+      const newSetOfReqs=pending.splice(reqs.indexOf(personToAccept),1);
       this.setState({pendingFriendRequests:newSetOfReqs});
       console.log('after', this.state.pendingFriendRequests);
 
