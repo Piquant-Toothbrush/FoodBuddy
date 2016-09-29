@@ -268,7 +268,7 @@ class App extends React.Component {
        
        console.log('should include everybody to whom a req has ever been sent, short of most recent', resp);
           $(document).scrollTop(0);
-          if (person.indexOf(resp)>-1){
+          if (resp.indexOf(person)>-1){
             console.log('case caught 272')
             $("#AlreadyReq,#AlreadyReq2").fadeIn(1000);
             $("#AlreadyReq,#AlreadyReq2").fadeOut(1000);
