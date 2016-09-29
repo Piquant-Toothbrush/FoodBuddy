@@ -170,7 +170,7 @@ class MovieWatchRequest extends React.Component {
       return (
         <div>
           <button className="center waves-effect waves-light btn" onClick={this.handleClick.bind(this)}>{(this.state.requestSent) ? 'Send Another Watch Request' : 'Send A Watch Request'}</button>
-          <span className='sent updateMsg'>{(this.state.requestSent) ? 'your request has been sent' : ''}</span>
+          <span className='sent updateMsg'>{(this.state.requestSent) ? 'Request sent!' : ''}</span>
         </div>
         )
     }
