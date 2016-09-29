@@ -11,6 +11,7 @@ class SingleMovieRating extends React.Component {
 
   componentDidMount() {
     this.getFriendsRating(this.state.movie);
+    console.log("should be ununiq", this.state.friendRatings);
   }
 
   componentWillReceiveProps() {
