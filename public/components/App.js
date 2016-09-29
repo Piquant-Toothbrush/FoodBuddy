@@ -306,7 +306,8 @@ class App extends React.Component {
         }
       }
       //
-console.log("Totality of inbox",pFR, rR);
+      console.log("Totality of inbox",pFR, rR);
+      
       this.setState({
         pendingFriendRequests:pFR,
         requestResponses:rR
