@@ -43,6 +43,7 @@ class App extends React.Component {
     })
   }
 
+
   acceptFriend(personToAccept, movie) {
   
     console.log('calling aF');
@@ -308,7 +309,7 @@ class App extends React.Component {
   };
 
   focusOnFriend(friend) {
-    
+    //
       this.setState({
         view:'singleFriend',
         friendToFocusOn: friend
