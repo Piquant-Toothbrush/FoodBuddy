@@ -53,7 +53,7 @@ class SingleMovieRating extends React.Component {
          }
        }
 
-
+      console.log('should be uniq', uniqResponses);
 
       that.setState({
         friendRatings: uniqResponses
