@@ -47,8 +47,8 @@ class SingleMovieRating extends React.Component {
        const uniqResponses = [];
        const friendName = {};
        for (let i=0; i<response.length; i++){
-         if (!friendName[response[i].friendUserName]){
-          friendName[response[i].friendUserName] = null;
+         if (friendName[response[i].friendUserName] === undefined){
+          friendName[response[i].friendUserName] = "defined";
           uniqResponses.push(response[i]);
          }
        }
