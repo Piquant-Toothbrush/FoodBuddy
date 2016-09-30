@@ -23,7 +23,7 @@ app.use(sessions({
   activeDuration: 1000 * 60 * 5, // if expiresIn < activeDuration, the session will be extended by activeDuration milliseconds
   saveInitialized: true
 }));
-
+app.use(express.compress());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 app.use(express.static(__dirname + '/public'));
