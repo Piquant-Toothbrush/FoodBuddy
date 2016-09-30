@@ -30,9 +30,9 @@ app.use(compression());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 
-app.use(express.static(__dirname + '/public', {maxAge:3600*24 *1000}));
-app.use('/scripts', express.static(__dirname + '/node_modules', {maxAge:3600*24*1000}));
-app.use('/compiled', express.static(__dirname + '/compiled', {maxAge:3600*24*1000}));
+app.use(express.static(__dirname + '/public', {maxAge:"1d"}));
+app.use('/scripts', express.static(__dirname + '/node_modules', {maxAge:"1d"}));
+app.use('/compiled', express.static(__dirname + '/compiled', {maxAge:"1d"}));
 
 
 app.post('/signup', handler.signupUser);
