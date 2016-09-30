@@ -33,9 +33,7 @@ app.use('/compiled', express.static(__dirname + '/compiled'));
 
 app.post('/signup', handler.signupUser);
 app.post('/login', handler.signinUser);
-app.get('/login',function(req,res){
-	console.log('loeijwfloejfelifjdp')
-});
+
 
 //////////////////
 //Handling friends
