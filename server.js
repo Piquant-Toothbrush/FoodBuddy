@@ -5,6 +5,8 @@ var app = express();
 var bodyParser = require('body-parser');
 var sessions = require("client-sessions");
 var cors = require('cors');
+var compression = require('compression');
+
 
 app.get('*', function(req,res,next) {
   if (req.headers['x-forwarded-proto'] !== 'https') {
@@ -23,7 +25,8 @@ app.use(sessions({
   activeDuration: 1000 * 60 * 5, // if expiresIn < activeDuration, the session will be extended by activeDuration milliseconds
   saveInitialized: true
 }));
-app.use(express.compress());
+
+app.use(compression());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 app.use(express.static(__dirname + '/public'));
