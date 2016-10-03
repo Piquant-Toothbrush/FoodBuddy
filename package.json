@@ -36,6 +36,7 @@
     "nodemon": "^1.9.2",
     "q": "^1.4.1",
     "react": "^15.2.1",
+    "react-copy-to-clipboard": "^4.2.3",
     "react-dom": "latest",
     "react-dropzone": "^3.5.3",
     "react-router": "^2.8.1",
@@ -56,7 +57,12 @@
     "node": "6.0.0"
   },
   "devDependencies": {
+    "babel-core": "^6.17.0",
+    "babel-loader": "^6.2.5",
+    "babel-preset-es2015": "^6.16.0",
     "babel-preset-minify-es2015": "0.0.3",
+    "babel-preset-react": "^6.16.0",
+    "babel-preset-stage-0": "^6.16.0",
     "grunt": "^1.0.1",
     "grunt-shell": "^2.0.0",
     "webpack": "^1.13.2"

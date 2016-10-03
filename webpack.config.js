@@ -1,7 +1,9 @@
 const webpack = require('webpack');
 
-const SRC_DIR = path.join(__dirname, 'client', 'src');
-const DIST_DIR = path.join(__dirname, 'client', 'public');
+const path = require('path');
+
+const SRC_DIR = path.join(__dirname, 'public');
+const DIST_DIR = path.join(__dirname, 'public');
 
 const config = {
   devtool: 'inline-sourcemap',
@@ -10,17 +12,17 @@ const config = {
     modulesDirectories: ['node_modules'],
     extensions: ['', '.js', '.jsx']
   },
-  entry: './oublic/index.js',
+  entry: [path.join(SRC_DIR, 'index.jsx')],
   output: {
-    path: './public',
+    path: DIST_DIR,
     filename: 'bundle.js'
   },
   module: {
     loaders: [
       {
         test: /\.jsx?/,
-        include: "./public",
-        loader: 'babel'
+        include: SRC_DIR,
+        loader: 'babel',
       }
     ]
   }
